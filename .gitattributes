@@ -1,0 +1,2 @@
+# Store every text file with LF in the repository; keep the working tree identical on Windows.
+* text=auto eol=lf

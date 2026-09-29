@@ -1,0 +1,15 @@
+# Dependencies — this plugin has none today; a future devDependency lands here.
+node_modules/
+
+# Tarballs produced by `npm pack` / `npm publish`.
+*.tgz
+
+# A local registry config can hold a token; never commit one.
+.npmrc
+
+# OS cruft.
+.DS_Store
+Thumbs.db
+
+# Logs.
+*.log

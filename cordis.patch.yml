@@ -1,0 +1,8 @@
+# Bundle patch for dsh-prefill-speed-stats, applied after the base and web-app
+# layers. One row: the Host half that registers the `sessionSpeed` projection.
+# The browser half needs no row of its own -- `dsh-client-modules` attaches a
+# package's `dsh.client` half to the Loader row whose specifier is the bare
+# package name, which is the row inserted here.
+- insert:
+    - id: prefill-speed-stats
+      name: dsh-prefill-speed-stats

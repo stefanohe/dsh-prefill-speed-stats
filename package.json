@@ -1,0 +1,43 @@
+{
+  "name": "dsh-prefill-speed-stats",
+  "version": "0.2.0-rc.2",
+  "description": "Show prefill speed directly in the status bar.",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "prefill",
+    "tokens-per-second"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanohe/dsh-prefill-speed-stats.git"
+  },
+  "homepage": "https://github.com/stefanohe/dsh-prefill-speed-stats#readme",
+  "bugs": {
+    "url": "https://github.com/stefanohe/dsh-prefill-speed-stats/issues"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "lib",
+    "images",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  }
+}
