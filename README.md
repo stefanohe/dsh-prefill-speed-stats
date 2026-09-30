@@ -14,8 +14,15 @@ speed, and opens a two-row dialog with the session average and a last-N-steps wi
 
 ## Install
 
-Two ways in. Both end with the same last step: **fully restart the app** — the browser bundle is
-snapshotted when the boot graph is composed, so a page refresh is not enough.
+Two ways in. Both end with the same two steps: **fully restart the app** — the browser bundle is
+snapshotted when the boot graph is composed, so a page refresh is not enough — and then **switch the
+new plugin on** in the plugin panel on the left.
+
+**pnpm 11.7.0 is recommended.** If pnpm is not installed yet:
+
+```sh
+npm install -g pnpm@11.7.0
+```
 
 **A. From npm** — nothing to clone:
 
@@ -37,6 +44,9 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
 2. Check that the package name is listed in `dsh.profile.bundles` in that profile's `package.json`
    (installing through the plugin manager does this for you).
 3. Restart the app.
+4. Open the plugin panel on the left and switch the new plugin on:
+
+   ![Switching the plugin on in the plugin panel](images/use_dsh-prefill-speed-stats.png)
 
 **B. From this repository** — source, offline, or a version npm does not serve:
 
@@ -46,7 +56,7 @@ sh ./install.sh                        # macOS / Linux
 pwsh -File .\install.ps1 -From npm     # …or install the published package instead
 ```
 
-The script performs steps 1–2 for you, backs up the manifest it edits, and prints step 3.
+The script performs steps 1–2 for you, backs up the manifest it edits, and prints what is left to do.
 
 ## What it shows
 
@@ -104,7 +114,13 @@ MIT — see [LICENSE](LICENSE).
 
 ## 安装
 
-两种方式，最后一步一样：**完全重启应用**——浏览器 bundle 在启动组合时快照，刷新页面不够。
+两种方式，最后两步一样：**完全重启应用**——浏览器 bundle 在启动组合时快照，刷新页面不够——重启后在**左侧的插件面板里把新装的插件打开**。
+
+**建议使用 pnpm 11.7.0。** 如果还没安装 pnpm：
+
+```sh
+npm install -g pnpm@11.7.0
+```
 
 **A. 从 npm 安装** —— 不用 clone：
 
@@ -124,6 +140,9 @@ MIT — see [LICENSE](LICENSE).
 
 2. 确认该 profile `package.json` 的 `dsh.profile.bundles` 里有这个包名（用插件管理器装的话它会替你写）。
 3. 重启应用。
+4. 在左侧的插件面板里把新装的插件打开：
+
+   ![在插件面板里打开新装的插件](images/use_dsh-prefill-speed-stats.png)
 
 **B. 从本仓库安装** —— 源码 / 离线 / npm 上没有的版本：
 
@@ -133,7 +152,7 @@ sh ./install.sh                        # macOS / Linux
 pwsh -File .\install.ps1 -From npm     # 也可以直接装 npm 上的已发布版本
 ```
 
-脚本会替你做完第 1–2 步（并备份它改过的 manifest），然后提示第 3 步。
+脚本会替你做完第 1–2 步（并备份它改过的 manifest），然后提示剩下的步骤。
 
 ## 显示内容
 
