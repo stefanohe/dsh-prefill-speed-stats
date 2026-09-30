@@ -19,11 +19,19 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
 
 **A. From npm** — nothing to clone:
 
-1. Add the package to your DSH profile. DSH's plugin manager installs it by name (`Settings → Plugins`,
-   or the `plugin_manager` agent tool), or run this inside `<dsh home>/profiles/<profile>`:
+1. Add the package to your DSH profile — its directory is `<dsh home>/profiles/<profile>`, and this
+   plugin targets the `desktop` profile — or use the plugin manager (`Settings → Plugins`, or the
+   `plugin_manager` agent tool):
 
    ```sh
    pnpm add dsh-prefill-speed-stats
+   ```
+
+   With DeepSeek Harness in its default location:
+
+   ```sh
+   cd "$env:USERPROFILE\.dsh\profiles\desktop" ; pnpm add dsh-prefill-speed-stats     # Windows
+   cd ~/.dsh/profiles/desktop ; pnpm add dsh-prefill-speed-stats                      # macOS / Linux
    ```
 
 2. Check that the package name is listed in `dsh.profile.bundles` in that profile's `package.json`
@@ -100,10 +108,18 @@ MIT — see [LICENSE](LICENSE).
 
 **A. 从 npm 安装** —— 不用 clone：
 
-1. 安装到 DSH profile：可以用 DSH 的插件管理器按包名安装（设置 → 插件，或 `plugin_manager` 工具），也可以在 `<DSH 主目录>/profiles/<profile>` 里执行：
+1. 安装到 DSH profile —— profile 目录是 `<DSH 主目录>/profiles/<profile>`，本插件面向 `desktop` profile ——
+   或用插件管理器（设置 → 插件，或 agent 的 `plugin_manager` 工具）：
 
    ```sh
    pnpm add dsh-prefill-speed-stats
+   ```
+
+   DeepSeek Harness 装在默认位置时：
+
+   ```sh
+   cd "$env:USERPROFILE\.dsh\profiles\desktop" ; pnpm add dsh-prefill-speed-stats     # Windows
+   cd ~/.dsh/profiles/desktop ; pnpm add dsh-prefill-speed-stats                      # macOS / Linux
    ```
 
 2. 确认该 profile `package.json` 的 `dsh.profile.bundles` 里有这个包名（用插件管理器装的话它会替你写）。
