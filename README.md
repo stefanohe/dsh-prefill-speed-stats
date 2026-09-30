@@ -1,3 +1,10 @@
+# dsh-prefill-speed-stats
+
+<p align="center">
+  <sub>by <a href="https://github.com/stefanohe">Stefano's AI Lab</a></sub>
+  <br>
+</p>
+
 **dsh-prefill-speed-stats**: Show prefill speed directly in the status bar. 【For: deepseek-harness-v0.2.0-rc.2】
 
 It adds one cell left of the shipped session-statistics strip, showing the session-average prefill
@@ -36,11 +43,11 @@ The script performs steps 1–2 for you, backs up the manifest it edits, and pri
 
 ## What it shows
 
-| Row | Value |
-| --- | --- |
-| dock cell | session-average prefill speed, in `tok/s` |
-| `Prefill speed (session average)` | `Σ uncached prompt tokens ÷ Σ prefill windows` over the whole log |
-| `Prefill speed (last N steps)` | the same ratio over the last (up to 10) measured steps — the label names the count it really averaged |
+| Row                               | Value                                                                                                 |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| dock cell                         | session-average prefill speed, in `tok/s`                                                             |
+| `Prefill speed (session average)` | `Σ uncached prompt tokens ÷ Σ prefill windows` over the whole log                                     |
+| `Prefill speed (last N steps)`    | the same ratio over the last (up to 10) measured steps — the label names the count it really averaged |
 
 `uncached tokens` is `usage.inputTokens`: the part of the prompt the provider had to compute, where a
 prefix-cache hit costs nothing. `prefill window` is `step/start` → first visible token. Steps that never
@@ -55,18 +62,21 @@ on true prefill throughput.
 
 ## Files
 
-| File | Role |
-| --- | --- |
-| `index.js` | Host half: registers the `sessionSpeed` projection |
-| `lib/projection.js` | The fold, its schemas, and the two readings' operands |
-| `lib/stream.js` | First-visible-token timing |
-| `client.js` | Browser half: the dock cell, its dialog, styles and copy |
-| `cordis.patch.yml` | Inserts the Host row the browser half attaches to |
-| `test/` | Projection tests — `node --test test/projection.test.cjs` |
+| File                         | Role                                                                                       |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| `index.js`                   | Host half: registers the `sessionSpeed` projection                                         |
+| `lib/projection.js`          | The fold, its schemas, and the two readings' operands                                      |
+| `lib/stream.js`              | First-visible-token timing                                                                 |
+| `client.js`                  | Browser half: the dock cell, its dialog, styles and copy                                   |
+| `cordis.patch.yml`           | Inserts the Host row the browser half attaches to                                          |
+| `test/`                      | Projection tests — `node --test test/projection.test.cjs`                                  |
 | `install.ps1` / `install.sh` | Install into a DSH profile — links this checkout, or `-From npm` for the published package |
 
 ## Notes
 
+* Runs inside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
+* Sits left of the shipped session-statistics strip; the sibling `dsh-show-balance` cell, when
+  installed, sits to its left.
 * The reading updates as the session grows; there is nothing to configure.
 * Unknown events and malformed log records are ignored rather than fatal, so a future harness event can
   only cost accuracy, never the session.
@@ -113,10 +123,10 @@ pwsh -File .\install.ps1 -From npm -Ref 0.2.0-rc.2   # 只有预发布版时必�
 
 ## 显示内容
 
-| 行 | 值 |
-| --- | --- |
-| 状态栏上的格子 | 会话平均输入速度，单位 `tok/s` |
-| `输入速度（会话平均）` | 整个会话的 `Σ 未命中缓存 token ÷ Σ 预填充窗口` |
+| 行                      | 值                                                                    |
+| ----------------------- | --------------------------------------------------------------------- |
+| 状态栏上的格子          | 会话平均输入速度，单位 `tok/s`                                        |
+| `输入速度（会话平均）`  | 整个会话的 `Σ 未命中缓存 token ÷ Σ 预填充窗口`                        |
 | `输入速度（最近 N 步）` | 同一算法，只统计最近（最多 10）个已测量步；标题会写出它真正平均了几步 |
 
 `未命中缓存 token` 就是 `usage.inputTokens`：提供方真正需要计算的那部分提示词，命中前缀缓存的部分不计。`预填充窗口` 是 `step/start` → 首个可见 token。始终没产出可见 token 的步没有窗口，因此两个读数都不统计它，其 token 记在 `session.unmeasuredInputTokens` 里。
@@ -125,18 +135,20 @@ pwsh -File .\install.ps1 -From npm -Ref 0.2.0-rc.2   # 只有预发布版时必�
 
 ## 文件
 
-| 文件 | 作用 |
-| --- | --- |
-| `index.js` | 宿主半边：注册 `sessionSpeed` 投影 |
-| `lib/projection.js` | 折叠逻辑、schema 与两个读数的算子 |
-| `lib/stream.js` | 首个可见 token 的计时 |
-| `client.js` | 浏览器半边：格子、面板、样式与文案 |
-| `cordis.patch.yml` | 插入宿主行（浏览器半边挂在它上） |
-| `test/` | 投影测试 —— `node --test test/projection.test.cjs` |
+| 文件                         | 作用                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| `index.js`                   | 宿主半边：注册 `sessionSpeed` 投影                           |
+| `lib/projection.js`          | 折叠逻辑、schema 与两个读数的算子                            |
+| `lib/stream.js`              | 首个可见 token 的计时                                        |
+| `client.js`                  | 浏览器半边：格子、面板、样式与文案                           |
+| `cordis.patch.yml`           | 插入宿主行（浏览器半边挂在它上）                             |
+| `test/`                      | 投影测试 —— `node --test test/projection.test.cjs`           |
 | `install.ps1` / `install.sh` | 装进 DSH profile（默认链接本地克隆，`-From npm` 装已发布版） |
 
 ## 说明
 
+* 运行在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里。
+* 位置在内置「会话统计」左边；装了 `dsh-show-balance` 时它在更左边。
 * 读数随会话增长自动更新，没有任何需要配置的项。
 * 未知事件与畸形日志记录一律忽略而不致命，未来的 harness 事件最多损失精度，不会损坏会话。
 * 非官方插件，只使用公开接口（`sessionSpeed` 宿主投影与 `conversation.composer.dock` 槽位）。
