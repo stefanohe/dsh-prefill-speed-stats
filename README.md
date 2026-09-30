@@ -23,7 +23,7 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
    or the `plugin_manager` agent tool), or run this inside `<dsh home>/profiles/<profile>`:
 
    ```sh
-   pnpm add dsh-prefill-speed-stats@0.2.0-rc.2
+   pnpm add dsh-prefill-speed-stats
    ```
 
 2. Check that the package name is listed in `dsh.profile.bundles` in that profile's `package.json`
@@ -36,7 +36,6 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
 pwsh -File .\install.ps1               # Windows
 sh ./install.sh                        # macOS / Linux
 pwsh -File .\install.ps1 -From npm     # …or install the published package instead
-pwsh -File .\install.ps1 -From npm -Ref 0.2.0-rc.2   # …pinned, as a prerelease-only release needs
 ```
 
 The script performs steps 1–2 for you, backs up the manifest it edits, and prints step 3.
@@ -91,9 +90,9 @@ MIT — see [LICENSE](LICENSE).
 
 **dsh-prefill-speed-stats**：直接在状态栏显示 prefill 速度。【适用于：deepseek-harness-v0.2.0-rc.2】
 
-位置在内置「会话统计」左边；点开可看会话平均与最近 N 步两个读数。
-
 ![中文界面下的输入统计](images/zh-prefill-stats.png)
+
+位置在内置「会话统计」左边；点开可看会话平均与最近 N 步两个读数。
 
 ## 安装
 
@@ -104,7 +103,7 @@ MIT — see [LICENSE](LICENSE).
 1. 安装到 DSH profile：可以用 DSH 的插件管理器按包名安装（设置 → 插件，或 `plugin_manager` 工具），也可以在 `<DSH 主目录>/profiles/<profile>` 里执行：
 
    ```sh
-   pnpm add dsh-prefill-speed-stats@0.2.0-rc.2   # 出了正式版就去掉 @… 部分
+   pnpm add dsh-prefill-speed-stats
    ```
 
 2. 确认该 profile `package.json` 的 `dsh.profile.bundles` 里有这个包名（用插件管理器装的话它会替你写）。
@@ -116,7 +115,6 @@ MIT — see [LICENSE](LICENSE).
 pwsh -File .\install.ps1               # Windows：链接当前克隆
 sh ./install.sh                        # macOS / Linux
 pwsh -File .\install.ps1 -From npm     # 也可以直接装 npm 上的已发布版本
-pwsh -File .\install.ps1 -From npm -Ref 0.2.0-rc.2   # 只有预发布版时必须钉住版本
 ```
 
 脚本会替你做完第 1–2 步（并备份它改过的 manifest），然后提示第 3 步。
