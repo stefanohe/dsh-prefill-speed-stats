@@ -7,10 +7,10 @@
 
 **dsh-prefill-speed-stats**: Show prefill speed directly in the status bar. 【For: deepseek-harness-v0.2.0-rc.2】
 
+![Prefill statistics in the English UI](images/en-prefill-stats.png)
+
 It adds one cell left of the shipped session-statistics strip, showing the session-average prefill
 speed, and opens a two-row dialog with the session average and a last-N-steps window.
-
-![Prefill statistics in the English UI](images/en-prefill-stats.png)
 
 ## Install
 
@@ -23,7 +23,7 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
    or the `plugin_manager` agent tool), or run this inside `<dsh home>/profiles/<profile>`:
 
    ```sh
-   pnpm add dsh-prefill-speed-stats@0.2.0-rc.2   # drop @… once a stable release exists
+   pnpm add dsh-prefill-speed-stats@0.2.0-rc.2
    ```
 
 2. Check that the package name is listed in `dsh.profile.bundles` in that profile's `package.json`
@@ -33,7 +33,7 @@ snapshotted when the boot graph is composed, so a page refresh is not enough.
 **B. From this repository** — source, offline, or a version npm does not serve:
 
 ```sh
-pwsh -File .\install.ps1               # Windows: link this checkout
+pwsh -File .\install.ps1               # Windows
 sh ./install.sh                        # macOS / Linux
 pwsh -File .\install.ps1 -From npm     # …or install the published package instead
 pwsh -File .\install.ps1 -From npm -Ref 0.2.0-rc.2   # …pinned, as a prerelease-only release needs
